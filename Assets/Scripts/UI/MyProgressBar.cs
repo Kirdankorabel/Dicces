@@ -61,24 +61,19 @@ public class MyProgressBar : MonoBehaviour
         barValue = value;
         var fillAmount = (float)value / (float)startVaue;
         txtTitle.text = value + "/" + startVaue;
-        StartCoroutine(BarChangedCorutine(fillAmount));
+
+        if (bar.fillAmount > fillAmount)
+            StartCoroutine(BarChangedCorutine(fillAmount, -1));
+        if (bar.fillAmount < fillAmount)
+            StartCoroutine(BarChangedCorutine(fillAmount, 1));
     }
 
-    private IEnumerator BarChangedCorutine(float fillAmount)
+    private IEnumerator BarChangedCorutine(float fillAmount, int value)
     {
-        if (bar.fillAmount > fillAmount)
         {
             while (Mathf.Abs(bar.fillAmount - fillAmount) > 0.01f)
             {
-                bar.fillAmount = bar.fillAmount - 0.5f * Time.deltaTime;
-                yield return null;
-            }
-        }
-        else if (bar.fillAmount < fillAmount)
-        {
-            while (Mathf.Abs(bar.fillAmount - fillAmount) > 0.01f)
-            {
-                bar.fillAmount = bar.fillAmount + 0.5f * Time.deltaTime;
+                bar.fillAmount = bar.fillAmount + value * 0.5f * Time.deltaTime;
                 yield return null;
             }
         }
