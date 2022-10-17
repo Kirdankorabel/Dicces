@@ -1,6 +1,7 @@
 public class Posion : Effect
 {
     public readonly int MaxValue = 2;
+
     public Posion(int duration, int value, CharacterInfo target, EffectType effectType) : base(duration, value, target, effectType)
     {
         _duration = duration;

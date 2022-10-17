@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class CharacterInfo 
 {
     public readonly int startHealth;
     public readonly List<DiceInfo> diceInfos;
 
+    private List<DicesAction> _actions = new List<DicesAction>();
     private List<Effect> _effects = new List<Effect>();
     private int _health;
 
@@ -24,18 +24,15 @@ public class CharacterInfo
     }
 
     public int Armor { get; set; }
-    public CharacterRoundAction RoundAction { get; set; }
+
+    public List<DicesAction> Actions => _actions;
 
     public CharacterInfo (int _startHealth, List<DiceInfo> _diceInfos)
     {
         startHealth = _startHealth;
         Health = startHealth;
         diceInfos = _diceInfos;
-        Round.RoundStarted += () =>
-        {
-            RoundAction = new CharacterRoundAction();
-            NextRound();
-        };
+        Round.RoundStarted += () => NextRound();
 
         LevelController.LevelCompleted += (res) => Clear();
     }

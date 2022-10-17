@@ -45,9 +45,9 @@ public class Round
 
     private void CreateEffects()
     {
-        foreach (var action in _player.CharacterInfo.RoundAction.Actions)
+        foreach (var action in _player.CharacterInfo.Actions)
             effectCreator.CreateEffect(action, _player.CharacterInfo, _enemie.CharacterInfo);
-        foreach (var action in _enemie.CharacterInfo.RoundAction.Actions)
+        foreach (var action in _enemie.CharacterInfo.Actions)
             effectCreator.CreateEffect(action, _enemie.CharacterInfo, _player.CharacterInfo);
     }
 

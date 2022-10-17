@@ -1,7 +1,7 @@
 public abstract class Effect
 {
-    public int _duration;
     public readonly EffectType effectType;
+    public int _duration;
     protected int _value;
     protected CharacterInfo _target;
 

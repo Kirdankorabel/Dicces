@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Damage : Effect
 {
     public Damage(int duration, int value, CharacterInfo target, EffectType effectType) : base(duration, value, target, effectType)

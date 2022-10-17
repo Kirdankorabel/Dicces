@@ -64,7 +64,7 @@ public class Character : MonoBehaviour
             cube.ResultGotted += (result) =>
             {
                 _counter++;
-                _characterInfo.RoundAction.Actions.Add(result);
+                _characterInfo.Actions.Add(result);
                 _effectUser.UseEffect(result);
             };
         StartCoroutine(WaiteResultCorutine(() => Moved?.Invoke(), _characterInfo.diceInfos.Count)); 
